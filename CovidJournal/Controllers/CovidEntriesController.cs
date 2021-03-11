@@ -46,7 +46,22 @@ namespace CovidJournal.Controllers
             ViewBag.temperatureData = JsonConvert.SerializeObject(temperatureList);
             ViewBag.moodData = JsonConvert.SerializeObject(moodList);
 
+            // Obtaining user data
+            ViewBag.CurrentUser = GetCurrentUser();
+
             return View(await _context.CovidEntry.ToListAsync());
+        }
+
+        // Helper function to get user
+        public ApplicationUser GetCurrentUser()
+        {
+            // user name of currently logged in user
+            var userNameOfCurrentlyLoggedInUser = User.Identity.Name;
+
+            // find in user table and get all details
+            var user = _context.Users.Where(u => u.UserName == userNameOfCurrentlyLoggedInUser);
+           
+            return user.FirstOrDefault();
         }
 
         // GET: CovidEntries/Details/5

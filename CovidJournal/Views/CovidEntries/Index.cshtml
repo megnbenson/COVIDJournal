@@ -10,7 +10,9 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Index</h1>
+<h1>This is your journal!</h1>
+<h3> Your name is: @ViewBag.CurrentUser.FirstName</h3>
+<h3> You are amazing Mr/Mrs: @ViewBag.CurrentUser.LastName.</h3>
 
 <p>
     <a asp-action="Create">Create New</a>
