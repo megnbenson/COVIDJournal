@@ -8,9 +8,11 @@ using Microsoft.EntityFrameworkCore;
 using CovidJournal.Data;
 using CovidJournal.Models;
 using Newtonsoft.Json;
+using Microsoft.AspNetCore.Authorization;
 
 namespace CovidJournal.Controllers
 {
+    [Authorize]
     public class CovidEntriesController : Controller
     {
         private readonly ApplicationDbContext _context;
@@ -33,7 +35,7 @@ namespace CovidJournal.Controllers
 
 
 
-            // for graph -----------------
+            // Temperature graph
             double count = 0;
             List<DataPoint> dataPoints = new List<DataPoint>();
 
@@ -45,8 +47,8 @@ namespace CovidJournal.Controllers
             }
 
             ViewBag.DataPoints = JsonConvert.SerializeObject(dataPoints);
-            // for graph -----------------
-
+            
+            // Mood graph
             count = 0;
             List<DataPoint> dataPoints2 = new List<DataPoint>();
 
