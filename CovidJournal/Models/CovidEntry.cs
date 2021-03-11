@@ -35,3 +35,4 @@ namespace CovidJournal.Models
         public bool Pale_Blue_Skin { get; set; }
     }
 }
+ 
