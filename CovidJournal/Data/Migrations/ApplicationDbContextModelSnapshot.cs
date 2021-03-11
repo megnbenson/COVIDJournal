@@ -26,20 +26,56 @@ namespace CovidJournal.Data.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<bool>("Breathlessness")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("Chest_Pressure")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("Chills")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("Cough")
+                        .HasColumnType("bit");
+
                     b.Property<int?>("CovidUserUserId")
                         .HasColumnType("int");
 
                     b.Property<DateTime>("Date")
                         .HasColumnType("datetime2");
 
+                    b.Property<bool>("Diarrhea")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("Fatigue")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("Fever")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("Headache")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("Lack_of_Smell")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("Lack_of_Taste")
+                        .HasColumnType("bit");
+
                     b.Property<int>("Mood")
                         .HasColumnType("int");
+
+                    b.Property<bool>("Nausea")
+                        .HasColumnType("bit");
 
                     b.Property<string>("Note")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("SymptomsId")
-                        .HasColumnType("int");
+                    b.Property<bool>("Pale_Blue_Skin")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("Sore_Throat")
+                        .HasColumnType("bit");
 
                     b.Property<float>("Temperature")
                         .HasColumnType("real");
@@ -67,57 +103,6 @@ namespace CovidJournal.Data.Migrations
                     b.HasKey("UserId");
 
                     b.ToTable("CovidUser");
-                });
-
-            modelBuilder.Entity("CovidJournal.Models.Symptoms", b =>
-                {
-                    b.Property<int>("SymptomsId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<bool>("Breathlessness")
-                        .HasColumnType("bit");
-
-                    b.Property<bool>("Chest_Pressure")
-                        .HasColumnType("bit");
-
-                    b.Property<bool>("Chills")
-                        .HasColumnType("bit");
-
-                    b.Property<bool>("Cough")
-                        .HasColumnType("bit");
-
-                    b.Property<bool>("Diarrhea")
-                        .HasColumnType("bit");
-
-                    b.Property<bool>("Fatigue")
-                        .HasColumnType("bit");
-
-                    b.Property<bool>("Fever")
-                        .HasColumnType("bit");
-
-                    b.Property<bool>("Headache")
-                        .HasColumnType("bit");
-
-                    b.Property<bool>("Lack_of_Smell")
-                        .HasColumnType("bit");
-
-                    b.Property<bool>("Lack_of_Taste")
-                        .HasColumnType("bit");
-
-                    b.Property<bool>("Nausea")
-                        .HasColumnType("bit");
-
-                    b.Property<bool>("Pale_Blue_Skin")
-                        .HasColumnType("bit");
-
-                    b.Property<bool>("Sore_Throat")
-                        .HasColumnType("bit");
-
-                    b.HasKey("SymptomsId");
-
-                    b.ToTable("Symptoms");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
