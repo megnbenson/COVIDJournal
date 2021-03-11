@@ -16,6 +16,5 @@ namespace CovidJournal.Data
 
         public DbSet<CovidUser> CovidUser { get; set; }
         public DbSet<CovidEntry> CovidEntry { get; set; }
-        public DbSet<Symptoms> Symptoms { get; set; }
     }
 }
