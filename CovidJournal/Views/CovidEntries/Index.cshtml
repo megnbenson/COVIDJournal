@@ -1,5 +1,6 @@
 ﻿@using System.Linq;
 @using Microsoft.EntityFrameworkCore;
+@using CovidJournal.Methods;
 @model IEnumerable<CovidJournal.Models.CovidEntry>
 
 @{
@@ -49,7 +50,7 @@
                     @Html.DisplayFor(modelItem => item.Mood)
                 </td>
                 <td>
-                    @* change here*@
+                    @LinqSymptoms.SymptomsList(item)
                 </td>
 
                 <td>
