@@ -1,0 +1,107 @@
+﻿@model IEnumerable<CovidJournal.Models.Symptoms>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Headache)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Cough)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Lack_of_Smell)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Lack_of_Taste)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Fever)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Chills)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Breathlessness)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Fatigue)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Sore_Throat)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Nausea)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Diarrhea)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Chest_Pressure)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Pale_Blue_Skin)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Headache)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Cough)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Lack_of_Smell)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Lack_of_Taste)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Fever)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Chills)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Breathlessness)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Fatigue)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Sore_Throat)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nausea)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Diarrhea)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Chest_Pressure)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Pale_Blue_Skin)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.SymptomsId">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.SymptomsId">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.SymptomsId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
