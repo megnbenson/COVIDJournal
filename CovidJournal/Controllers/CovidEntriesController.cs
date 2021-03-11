@@ -54,7 +54,7 @@ namespace CovidJournal.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("EntryId,Date,Temperature,Note,Mood")] CovidEntry covidEntry)
+        public async Task<IActionResult> Create([Bind("EntryId,Date,Temperature,Note,Mood,Headache,Cough,Lack_of_Smell,Lack_of_Taste,Fever,Chills,Breathlessness,Fatigue,Sore_Throat,Nausea,Diarrhea,Chest_Pressure,Pale_Blue_Skin")] CovidEntry covidEntry)
         {
             if (ModelState.IsValid)
             {
@@ -86,7 +86,7 @@ namespace CovidJournal.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("EntryId,Date,Temperature,Note,Mood")] CovidEntry covidEntry)
+        public async Task<IActionResult> Edit(int id, [Bind("EntryId,Date,Temperature,Note,Mood,Headache,Cough,Lack_of_Smell,Lack_of_Taste,Fever,Chills,Breathlessness,Fatigue,Sore_Throat,Nausea,Diarrhea,Chest_Pressure,Pale_Blue_Skin")] CovidEntry covidEntry)
         {
             if (id != covidEntry.EntryId)
             {
