@@ -35,7 +35,6 @@ namespace CovidJournal.Controllers
 
             // for graph -----------------
             double count = 0;
-            Random random = new Random();
             List<DataPoint> dataPoints = new List<DataPoint>();
 
             
@@ -47,6 +46,19 @@ namespace CovidJournal.Controllers
 
             ViewBag.DataPoints = JsonConvert.SerializeObject(dataPoints);
             // for graph -----------------
+
+            count = 0;
+            List<DataPoint> dataPoints2 = new List<DataPoint>();
+
+
+            foreach (var item in _context.CovidEntry.ToList())
+            {
+                count++;
+                dataPoints.Add(new DataPoint(count, (double)item.Mood));
+            }
+
+            ViewBag.DataPoints2 = JsonConvert.SerializeObject(dataPoints2);
+
 
             return View(await _context.CovidEntry.ToListAsync());
         }

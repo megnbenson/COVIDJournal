@@ -44,7 +44,7 @@
     <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
 
     @*script for filling container*@
-    <script>
+<script>
     window.onload = function () {
 
     var chart = new CanvasJS.Chart("chartContainer", {
@@ -55,14 +55,21 @@
 		    text: "Try Zooming and Panning"
 	    },
 	    data: [{
-		    type: "line",
+            type: "line",
+            name: "Temperature",
+            showInLegend: true,
 		    dataPoints: @Html.Raw(ViewBag.DataPoints)
+	    },{
+		    type: "line",
+            name: "Mood",
+		    showInLegend: true,
+		    dataPoints: @Html.Raw(ViewBag.DataPoints2)
 	    }]
     });
 
     chart.render();
     }
-    </script>
+</script>
 
     @*----------------------Changes----------------------*@
 
