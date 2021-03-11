@@ -16,27 +16,7 @@
     <a asp-action="Create">Create New</a>
 </p>
 <div>
-    @*@helper WelcomeMessage(string username)
-        {
-        <p>Welcome, @username.</p>
-        }
 
-        @WelcomeMessage("John Smith")*@
-
-    <!--<p> with this data:</p>
-    <p>-->
-    @*@{var myChart = new Chart(width: 600, height: 400)
-        .AddTitle("Chart Title")
-        .AddSeries(
-        name: "Employee",
-        xValue: new[] { "Peter", "Andrew", "Julie", "Mary", "Dave" },
-        yValues: new[] { "2", "6", "4", "5", "3" }) .Write(); }*@
-
-    <!--</p>-->
-
-    @*<p> A GRAPH HERE</p>*@
-
-    @*----------------------Changes----------------------*@
     @*container for graph*@
     <div id="chartContainer" style="height: 370px; width: 100%;"></div>
 
@@ -44,28 +24,42 @@
     <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
 
     @*script for filling container*@
-    <script>
+<script>
     window.onload = function () {
 
     var chart = new CanvasJS.Chart("chartContainer", {
-	    theme: "light1", // "light1", "light2", "dark1", "dark2"
+	    theme: "light2", // "light1", "light2", "dark1", "dark2"
 	    animationEnabled: true,
 	    zoomEnabled: true,
 	    title: {
-		    text: "Temperature Graph"
-	    },
+		    text: "Temperature/Mood Graph"
+        },
+        axisX: {
+            title: "Day in Numbers"
+        },
+        axisY: [{
+            title: "Mood in (JiTheMegLo scale)",
+            lineThickness: 1
+        }, {
+            title: "Temperature (in °C)",
+            lineThickness: 1
+        }],
 	    data: [{
-		    type: "line",
-		    dataPoints: @Html.Raw(ViewBag.DataPoints)
-	    },]
+            type: "line",
+            name: "Temperature",
+            showInLegend: true,
+		    dataPoints: @Html.Raw(ViewBag.temperatureData)
+	    },{
+            type: "line",
+            name: "Mood",
+            showInLegend: true,
+		    dataPoints: @Html.Raw(ViewBag.moodData)
+	    }]
     });
 
     chart.render();
     }
-    </script>
-
-    @*----------------------Changes----------------------*@
-
+</script>
 
 </div>
 <table class="table">

@@ -25,42 +25,21 @@ namespace CovidJournal.Controllers
         // GET: CovidEntries
         public async Task<IActionResult> Index()
         {
-            // Passing data from controller to view --------
-            //List<String> strList = new List<string> { "Peter", "Andrew", "Julie", "Mary", "Dave" };
-            //Dictionary<String, Object> rec = new Dictionary<string, object>();
-            //rec.Add("Entry", _context.CovidEntry);
-            //rec.Add("DataX", strList);
-            ////return View(await _context.CovidEntry.ToListAsync());
-            //await _context.SaveChangesAsync();
-
-
 
             // Temperature graph
             double count = 0;
-            List<DataPoint> dataPoints = new List<DataPoint>();
-
-            
-            foreach (var item in _context.CovidEntry.ToList())
-            {
-                count++;
-                dataPoints.Add(new DataPoint(count, (double)item.Temperature));
-            }
-
-            ViewBag.DataPoints = JsonConvert.SerializeObject(dataPoints);
-            
-            // Mood graph
-            count = 0;
-            List<DataPoint> dataPoints2 = new List<DataPoint>();
-
+            List<DataPoint> temperatureList = new List<DataPoint>();
+            List<DataPoint> moodList = new List<DataPoint>();
 
             foreach (var item in _context.CovidEntry.ToList())
             {
                 count++;
-                dataPoints.Add(new DataPoint(count, (double)item.Mood));
+                temperatureList.Add(new DataPoint(count, (double)item.Temperature));
+                moodList.Add(new DataPoint(count, (double)item.Mood));
             }
 
-            ViewBag.DataPoints2 = JsonConvert.SerializeObject(dataPoints2);
-
+            ViewBag.temperatureData = JsonConvert.SerializeObject(temperatureList);
+            ViewBag.moodData = JsonConvert.SerializeObject(moodList);
 
             return View(await _context.CovidEntry.ToListAsync());
         }
