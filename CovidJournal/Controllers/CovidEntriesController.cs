@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using CovidJournal.Data;
 using CovidJournal.Models;
+using Newtonsoft.Json;
 
 namespace CovidJournal.Controllers
 {
@@ -22,6 +23,28 @@ namespace CovidJournal.Controllers
         // GET: CovidEntries
         public async Task<IActionResult> Index()
         {
+            // Passing data from controller to view --------
+            //List<String> strList = new List<string> { "Peter", "Andrew", "Julie", "Mary", "Dave" };
+            //Dictionary<String, Object> rec = new Dictionary<string, object>();
+            //rec.Add("Entry", _context.CovidEntry);
+            //rec.Add("DataX", strList);
+            ////return View(await _context.CovidEntry.ToListAsync());
+            //await _context.SaveChangesAsync();
+
+            // for graph -----------------
+            double count = 1000, y = 100;
+            Random random = new Random();
+            List<DataPoint> dataPoints = new List<DataPoint>();
+
+            for (int i = 0; i < count; i++)
+            {
+                y += random.Next(-10, 11);
+                dataPoints.Add(new DataPoint(i, y));
+            }
+
+            ViewBag.DataPoints = JsonConvert.SerializeObject(dataPoints);
+            // for graph -----------------
+
             return View(await _context.CovidEntry.ToListAsync());
         }
 
