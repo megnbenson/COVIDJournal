@@ -18,5 +18,8 @@ namespace CovidJournal.Models
 
         [Display(Name = "How moody are you today?")]
         public int Mood { get; set; }
+
+        [ForeignKey("Symptoms")]
+        public int SymptomsId { get; set; }
     }
 }
