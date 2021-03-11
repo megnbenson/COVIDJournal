@@ -6,20 +6,20 @@ namespace CovidJournal.Data.Migrations
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.DropForeignKey(
-                name: "FK_CovidEntry_Symptoms_SymptomsId",
-                table: "CovidEntry");
+            //migrationBuilder.DropForeignKey(
+            //    name: "FK_CovidEntry_Symptoms_SymptomsId",
+            //    table: "CovidEntry");
 
-            migrationBuilder.DropTable(
-                name: "Symptoms");
+            //migrationBuilder.DropTable(
+            //    name: "Symptoms");
 
-            migrationBuilder.DropIndex(
-                name: "IX_CovidEntry_SymptomsId",
-                table: "CovidEntry");
+            //migrationBuilder.DropIndex(
+            //    name: "IX_CovidEntry_SymptomsId",
+            //    table: "CovidEntry");
 
-            migrationBuilder.DropColumn(
-                name: "SymptomsId",
-                table: "CovidEntry");
+            //migrationBuilder.DropColumn(
+            //    name: "SymptomsId",
+            //    table: "CovidEntry");
 
             migrationBuilder.AddColumn<bool>(
                 name: "Breathlessness",
@@ -167,49 +167,49 @@ namespace CovidJournal.Data.Migrations
                 name: "Sore_Throat",
                 table: "CovidEntry");
 
-            migrationBuilder.AddColumn<int>(
-                name: "SymptomsId",
-                table: "CovidEntry",
-                type: "int",
-                nullable: true);
+            //migrationBuilder.AddColumn<int>(
+            //    name: "SymptomsId",
+            //    table: "CovidEntry",
+            //    type: "int",
+            //    nullable: true);
 
-            migrationBuilder.CreateTable(
-                name: "Symptoms",
-                columns: table => new
-                {
-                    SymptomsId = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Breathlessness = table.Column<bool>(type: "bit", nullable: false),
-                    Chest_Pressure = table.Column<bool>(type: "bit", nullable: false),
-                    Chills = table.Column<bool>(type: "bit", nullable: false),
-                    Cough = table.Column<bool>(type: "bit", nullable: false),
-                    Diarrhea = table.Column<bool>(type: "bit", nullable: false),
-                    Fatigue = table.Column<bool>(type: "bit", nullable: false),
-                    Fever = table.Column<bool>(type: "bit", nullable: false),
-                    Headache = table.Column<bool>(type: "bit", nullable: false),
-                    Lack_of_Smell = table.Column<bool>(type: "bit", nullable: false),
-                    Lack_of_Taste = table.Column<bool>(type: "bit", nullable: false),
-                    Nausea = table.Column<bool>(type: "bit", nullable: false),
-                    Pale_Blue_Skin = table.Column<bool>(type: "bit", nullable: false),
-                    Sore_Throat = table.Column<bool>(type: "bit", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Symptoms", x => x.SymptomsId);
-                });
+            //migrationBuilder.CreateTable(
+            //    name: "Symptoms",
+            //    columns: table => new
+            //    {
+            //        SymptomsId = table.Column<int>(type: "int", nullable: false)
+            //            .Annotation("SqlServer:Identity", "1, 1"),
+            //        Breathlessness = table.Column<bool>(type: "bit", nullable: false),
+            //        Chest_Pressure = table.Column<bool>(type: "bit", nullable: false),
+            //        Chills = table.Column<bool>(type: "bit", nullable: false),
+            //        Cough = table.Column<bool>(type: "bit", nullable: false),
+            //        Diarrhea = table.Column<bool>(type: "bit", nullable: false),
+            //        Fatigue = table.Column<bool>(type: "bit", nullable: false),
+            //        Fever = table.Column<bool>(type: "bit", nullable: false),
+            //        Headache = table.Column<bool>(type: "bit", nullable: false),
+            //        Lack_of_Smell = table.Column<bool>(type: "bit", nullable: false),
+            //        Lack_of_Taste = table.Column<bool>(type: "bit", nullable: false),
+            //        Nausea = table.Column<bool>(type: "bit", nullable: false),
+            //        Pale_Blue_Skin = table.Column<bool>(type: "bit", nullable: false),
+            //        Sore_Throat = table.Column<bool>(type: "bit", nullable: false)
+            //    },
+            //    constraints: table =>
+            //    {
+            //        table.PrimaryKey("PK_Symptoms", x => x.SymptomsId);
+            //    });
 
-            migrationBuilder.CreateIndex(
-                name: "IX_CovidEntry_SymptomsId",
-                table: "CovidEntry",
-                column: "SymptomsId");
+            //migrationBuilder.CreateIndex(
+            //    name: "IX_CovidEntry_SymptomsId",
+            //    table: "CovidEntry",
+            //    column: "SymptomsId");
 
-            migrationBuilder.AddForeignKey(
-                name: "FK_CovidEntry_Symptoms_SymptomsId",
-                table: "CovidEntry",
-                column: "SymptomsId",
-                principalTable: "Symptoms",
-                principalColumn: "SymptomsId",
-                onDelete: ReferentialAction.Restrict);
+            //migrationBuilder.AddForeignKey(
+            //    name: "FK_CovidEntry_Symptoms_SymptomsId",
+            //    table: "CovidEntry",
+            //    column: "SymptomsId",
+            //    principalTable: "Symptoms",
+            //    principalColumn: "SymptomsId",
+            //    onDelete: ReferentialAction.Restrict);
         }
     }
 }
