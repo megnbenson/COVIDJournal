@@ -14,6 +14,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.WebUtilities;
 using Microsoft.Extensions.Logging;
+using System.Security.Claims;
 
 namespace CovidJournal.Areas.Identity.Pages.Account
 {
@@ -85,8 +86,11 @@ namespace CovidJournal.Areas.Identity.Pages.Account
             ExternalLogins = (await _signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser { FirstName = Input.FirstName, LastName =  Input.LastName, UserName = Input.Email, Email = Input.Email };
+                var user = new ApplicationUser { FirstName = Input.FirstName, LastName =  Input.LastName, UserName = Input.FirstName + Input.LastName, Email = Input.Email };
                 var result = await _userManager.CreateAsync(user, Input.Password);
+
+                await _userManager.AddClaimAsync(user, new Claim("FirstName", user.FirstName));
+
                 if (result.Succeeded)
                 {
                     _logger.LogInformation("User created a new account with password.");
