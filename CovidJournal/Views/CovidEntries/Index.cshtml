@@ -16,51 +16,8 @@
     <a asp-action="Create">Create New</a>
 </p>
 <div>
-
     @*container for graph*@
     <div id="chartContainer" style="height: 370px; width: 100%;"></div>
-
-    @*js library for graph*@
-    <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
-
-    @*script for filling container*@
-<script>
-    window.onload = function () {
-
-    var chart = new CanvasJS.Chart("chartContainer", {
-	    theme: "light2", // "light1", "light2", "dark1", "dark2"
-	    animationEnabled: true,
-	    zoomEnabled: true,
-	    title: {
-		    text: "Temperature/Mood Graph"
-        },
-        axisX: {
-            title: "Day in Numbers"
-        },
-        axisY: [{
-            title: "Mood in (JiTheMegLo scale)",
-            lineThickness: 1
-        }, {
-            title: "Temperature (in °C)",
-            lineThickness: 1
-        }],
-	    data: [{
-            type: "line",
-            name: "Temperature",
-            showInLegend: true,
-		    dataPoints: @Html.Raw(ViewBag.temperatureData)
-	    },{
-            type: "line",
-            name: "Mood",
-            showInLegend: true,
-		    dataPoints: @Html.Raw(ViewBag.moodData)
-	    }]
-    });
-
-    chart.render();
-    }
-</script>
-
 </div>
 <table class="table">
     <thead>
@@ -112,3 +69,50 @@
         }
     </tbody>
 </table>
+
+@*Scripts section*@
+@section scripts{
+
+    @*js library for graph*@
+    <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+
+    @*script for filling container*@
+    <script>
+    window.onload = function () {
+
+    var chart = new CanvasJS.Chart("chartContainer", {
+	    theme: "light2", // "light1", "light2", "dark1", "dark2"
+	    animationEnabled: true,
+	    zoomEnabled: true,
+	    title: {
+		    text: "Temperature/Mood Graph"
+        },
+        axisX: {
+            title: "Day in Numbers"
+        },
+        axisY: [{
+            title: "Temperature (in °C)",
+            lineThickness: 1
+        },{
+            title: "Mood in (JiTheMegLo scale)",
+            lineThickness: 1
+        }],
+	    data: [{
+            type: "line",
+            name: "Temperature",
+            showInLegend: true,
+		    dataPoints: @Html.Raw(ViewBag.temperatureData)
+	    },{
+            type: "line",
+            name: "Mood",
+            showInLegend: true,
+		    dataPoints: @Html.Raw(ViewBag.moodData)
+	    }]
+    });
+
+    chart.render();
+    }
+    </script>
+}
+
+
