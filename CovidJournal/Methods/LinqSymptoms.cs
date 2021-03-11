@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using CovidJournal.Models;
-using System.Windows.Forms;
 
 namespace CovidJournal.Methods
 {
@@ -23,6 +22,10 @@ namespace CovidJournal.Methods
                         symptoms += prop.Name + ", ";
                     }
                 }
+            }
+            if (symptoms.Length == 0)
+            {
+                return "No symptoms";
             }
 
             return symptoms.Remove(symptoms.Length - 2, 2).Replace("_", " ");
