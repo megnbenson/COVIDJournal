@@ -1,0 +1,120 @@
+﻿@model CovidJournal.Models.CovidEntry
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>CovidEntry</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Date)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Date)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Temperature)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Temperature)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Note)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Note)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Mood)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Mood)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Headache)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Headache)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Cough)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Cough)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Lack_of_Smell)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Lack_of_Smell)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Lack_of_Taste)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Lack_of_Taste)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Fever)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Fever)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Chills)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Chills)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Breathlessness)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Breathlessness)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Fatigue)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Fatigue)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Sore_Throat)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Sore_Throat)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Nausea)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Nausea)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Diarrhea)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Diarrhea)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Chest_Pressure)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Chest_Pressure)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Pale_Blue_Skin)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Pale_Blue_Skin)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.EntryId">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>
