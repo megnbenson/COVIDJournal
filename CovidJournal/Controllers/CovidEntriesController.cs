@@ -31,19 +31,34 @@ namespace CovidJournal.Controllers
             ////return View(await _context.CovidEntry.ToListAsync());
             //await _context.SaveChangesAsync();
 
+
+
             // for graph -----------------
-            double count = 1000, y = 100;
-            Random random = new Random();
+            double count = 0;
             List<DataPoint> dataPoints = new List<DataPoint>();
 
-            for (int i = 0; i < count; i++)
+            
+            foreach (var item in _context.CovidEntry.ToList())
             {
-                y += random.Next(-10, 11);
-                dataPoints.Add(new DataPoint(i, y));
+                count++;
+                dataPoints.Add(new DataPoint(count, (double)item.Temperature));
             }
 
             ViewBag.DataPoints = JsonConvert.SerializeObject(dataPoints);
             // for graph -----------------
+
+            count = 0;
+            List<DataPoint> dataPoints2 = new List<DataPoint>();
+
+
+            foreach (var item in _context.CovidEntry.ToList())
+            {
+                count++;
+                dataPoints.Add(new DataPoint(count, (double)item.Mood));
+            }
+
+            ViewBag.DataPoints2 = JsonConvert.SerializeObject(dataPoints2);
+
 
             return View(await _context.CovidEntry.ToListAsync());
         }
