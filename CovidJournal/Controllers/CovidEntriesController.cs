@@ -31,15 +31,18 @@ namespace CovidJournal.Controllers
             ////return View(await _context.CovidEntry.ToListAsync());
             //await _context.SaveChangesAsync();
 
+
+
             // for graph -----------------
-            double count = 1000, y = 100;
+            double count = 0;
             Random random = new Random();
             List<DataPoint> dataPoints = new List<DataPoint>();
 
-            for (int i = 0; i < count; i++)
+            
+            foreach (var item in _context.CovidEntry.ToList())
             {
-                y += random.Next(-10, 11);
-                dataPoints.Add(new DataPoint(i, y));
+                count++;
+                dataPoints.Add(new DataPoint(count, (double)item.Temperature));
             }
 
             ViewBag.DataPoints = JsonConvert.SerializeObject(dataPoints);
