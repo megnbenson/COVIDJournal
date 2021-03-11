@@ -27,17 +27,22 @@ namespace CovidJournal.Controllers
         {
 
             // Temperature graph
-            double count = 0;
             List<DataPoint> temperatureList = new List<DataPoint>();
             List<DataPoint> moodList = new List<DataPoint>();
-
+            
             foreach (var item in _context.CovidEntry.ToList())
             {
-                count++;
-                temperatureList.Add(new DataPoint(count, (double)item.Temperature));
-                moodList.Add(new DataPoint(count, (double)item.Mood));
+                // converting datetime into javascript date
+                var JSUnixDate = new DateTime(1970, 1, 1);
+                var dateOfEntry = item.Date;
+                var date = dateOfEntry.Subtract(JSUnixDate).TotalMilliseconds;
+                
+                // fill lists
+                temperatureList.Add(new DataPoint(date, (double)item.Temperature));
+                moodList.Add(new DataPoint(date, (double)item.Mood));
             }
 
+            // serialize into json and pass into Bag for view to accept
             ViewBag.temperatureData = JsonConvert.SerializeObject(temperatureList);
             ViewBag.moodData = JsonConvert.SerializeObject(moodList);
 

@@ -101,11 +101,15 @@
             type: "line",
             name: "Temperature",
             showInLegend: true,
+            xValueFormatString: "DD MM YYYY",
+            xValueType: "dateTime",
 		    dataPoints: @Html.Raw(ViewBag.temperatureData)
 	    },{
             type: "line",
             name: "Mood",
             showInLegend: true,
+            xValueFormatString: "DD MM YYYY",
+            xValueType: "dateTime",
 		    dataPoints: @Html.Raw(ViewBag.moodData)
 	    }]
     });
