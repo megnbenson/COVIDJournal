@@ -23,6 +23,10 @@ namespace CovidJournal.Methods
                     }
                 }
             }
+            if (symptoms.Length == 0)
+            {
+                return "No symptoms";
+            }
 
             return symptoms.Remove(symptoms.Length - 2, 2).Replace("_", " ");
         }
