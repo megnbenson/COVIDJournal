@@ -39,6 +39,17 @@ namespace CovidJournal.Controllers
             return user.FirstOrDefault();
         }
 
+        //public ApplicationUser GetRole()
+        //{
+        //    // user name of currently logged in user
+        //    var userNameOfCurrentlyLoggedInUser = User.Identity.Name;
+
+        //    // find in user table and get all details
+        //    var user = _context.UserRoles;
+
+        //    return user.FirstOrDefault();
+        //}
+
         public IActionResult Privacy()
         {
             return View();

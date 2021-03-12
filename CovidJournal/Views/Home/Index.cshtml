@@ -8,7 +8,11 @@
 
     @if (SignInManager.IsSignedIn(User))
     {
-        <h1 class="display-4">Welcome @ViewBag.User.FirstName</h1>
+        <h1 class="display-4">Welcome @ViewBag.User.FirstName</h1>            
+        if (User.IsInRole("Administrator"))
+        {
+            <h2>Admin mode</h2>
+        }
     }
     else
     {
