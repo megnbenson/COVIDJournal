@@ -1,8 +1,19 @@
-﻿@{
+﻿@using Microsoft.AspNetCore.Identity;
+@inject SignInManager<ApplicationUser> SignInManager
+@{
     ViewData["Title"] = "Home Page";
 }
 
 <div class="text-center">
-    <h1 class="display-4">Welcome @ViewBag.User.FirstName</h1>    
-    <img src="https://media.giphy.com/media/QMoXJjGPsmJ6Pdc596/giphy.gif"/>    
+
+    @if (SignInManager.IsSignedIn(User))
+    {
+        <h1 class="display-4">Welcome @ViewBag.User.FirstName</h1>
+    }
+    else
+    {
+        <h1 class="display-4">Welcome!</h1>
+    }
+
+    <img src="https://media.giphy.com/media/QMoXJjGPsmJ6Pdc596/giphy.gif" />
 </div>
