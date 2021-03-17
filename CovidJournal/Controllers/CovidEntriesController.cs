@@ -29,8 +29,10 @@ namespace CovidJournal.Controllers
             // Temperature graph
             List<DataPoint> temperatureList = new List<DataPoint>();
             List<DataPoint> moodList = new List<DataPoint>();
-            
-            foreach (var item in _context.CovidEntry.ToList())
+
+            var sortedEntryByDate = _context.CovidEntry.OrderByDescending(c=>c.Date).ToList();
+
+            foreach (var item in sortedEntryByDate)
             {
                 // converting datetime into javascript date
                 var JSUnixDate = new DateTime(1970, 1, 1);
