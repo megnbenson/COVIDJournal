@@ -12,11 +12,13 @@ namespace CovidJournal.Models
         [DataType(DataType.Date)]
         public DateTime Date { get; set; }
 
+        [Range(0, Int32.MaxValue, ErrorMessage = "The field must be positive.")]
         public float Temperature { get; set; }
 
         public string Note { get; set; }
 
         [Display(Name = "How moody are you today?")]
+        [Range(0, Int32.MaxValue, ErrorMessage = "The field must be positive.")]
         public int Mood { get; set; }
 
         // symptoms
