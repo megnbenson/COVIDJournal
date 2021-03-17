@@ -8,9 +8,11 @@ using Microsoft.EntityFrameworkCore;
 using CovidJournal.Data;
 using CovidJournal.Models;
 using Newtonsoft.Json;
+using Microsoft.AspNetCore.Authorization;
 
 namespace CovidJournal.Controllers
 {
+    [Authorize]
     public class CovidEntriesController : Controller
     {
         private readonly ApplicationDbContext _context;
@@ -23,44 +25,45 @@ namespace CovidJournal.Controllers
         // GET: CovidEntries
         public async Task<IActionResult> Index()
         {
-            // Passing data from controller to view --------
-            //List<String> strList = new List<string> { "Peter", "Andrew", "Julie", "Mary", "Dave" };
-            //Dictionary<String, Object> rec = new Dictionary<string, object>();
-            //rec.Add("Entry", _context.CovidEntry);
-            //rec.Add("DataX", strList);
-            ////return View(await _context.CovidEntry.ToListAsync());
-            //await _context.SaveChangesAsync();
 
+            // Temperature graph
+            List<DataPoint> temperatureList = new List<DataPoint>();
+            List<DataPoint> moodList = new List<DataPoint>();
 
+            var sortedEntryByDate = _context.CovidEntry.OrderByDescending(c=>c.Date).ToList();
 
-            // for graph -----------------
-            double count = 0;
-            List<DataPoint> dataPoints = new List<DataPoint>();
-
-            
-            foreach (var item in _context.CovidEntry.ToList())
+            foreach (var item in sortedEntryByDate)
             {
-                count++;
-                dataPoints.Add(new DataPoint(count, (double)item.Temperature));
+                // converting datetime into javascript date
+                var JSUnixDate = new DateTime(1970, 1, 1);
+                var dateOfEntry = item.Date;
+                var date = dateOfEntry.Subtract(JSUnixDate).TotalMilliseconds;
+                
+                // fill lists
+                temperatureList.Add(new DataPoint(date, (double)item.Temperature));
+                moodList.Add(new DataPoint(date, (double)item.Mood));
             }
 
-            ViewBag.DataPoints = JsonConvert.SerializeObject(dataPoints);
-            // for graph -----------------
+            // serialize into json and pass into Bag for view to accept
+            ViewBag.temperatureData = JsonConvert.SerializeObject(temperatureList);
+            ViewBag.moodData = JsonConvert.SerializeObject(moodList);
 
-            count = 0;
-            List<DataPoint> dataPoints2 = new List<DataPoint>();
-
-
-            foreach (var item in _context.CovidEntry.ToList())
-            {
-                count++;
-                dataPoints.Add(new DataPoint(count, (double)item.Mood));
-            }
-
-            ViewBag.DataPoints2 = JsonConvert.SerializeObject(dataPoints2);
-
+            // Obtaining user data
+            ViewBag.CurrentUser = GetCurrentUser();
 
             return View(await _context.CovidEntry.ToListAsync());
+        }
+
+        // Helper function to get user
+        public ApplicationUser GetCurrentUser()
+        {
+            // user name of currently logged in user
+            var userNameOfCurrentlyLoggedInUser = User.Identity.Name;
+
+            // find in user table and get all details
+            var user = _context.Users.Where(u => u.UserName == userNameOfCurrentlyLoggedInUser);
+           
+            return user.FirstOrDefault();
         }
 
         // GET: CovidEntries/Details/5
