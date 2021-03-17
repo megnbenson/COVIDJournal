@@ -10,6 +10,7 @@ namespace CovidJournal.Models
         public int EntryId { get; set; }
 
         [DataType(DataType.Date)]
+        [DateLessThanEqualToday]
         public DateTime Date { get; set; }
 
         [Range(0, Int32.MaxValue, ErrorMessage = "The field must be positive.")]
